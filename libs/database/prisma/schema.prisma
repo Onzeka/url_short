@@ -1,0 +1,32 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ShortenedUrl {
+  id          String     @id @default(uuid()) @db.Uuid
+  originalUrl String     @db.Text
+  slug        String     @unique @db.VarChar(50)
+  clicks      Int        @default(0)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  visits      UrlVisit[]
+
+  @@map("shortened_urls")
+}
+
+model UrlVisit {
+  id             String       @id @default(uuid()) @db.Uuid
+  shortenedUrlId String       @db.Uuid
+  shortenedUrl   ShortenedUrl @relation(fields: [shortenedUrlId], references: [id], onDelete: Cascade)
+  visitedAt      DateTime     @default(now())
+  userAgent      String?      @db.Text
+  ipAddress      String?      @db.VarChar(100)
+  referrer       String?      @db.Text
+
+  @@map("url_visits")
+}

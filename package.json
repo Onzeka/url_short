@@ -1,0 +1,22 @@
+{
+  "name": "stoik-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "db:generate": "bun --filter @stoik/database db:generate",
+    "db:migrate": "bun --filter @stoik/database db:migrate",
+    "dev:backend": "cd apps/backend && bun run --hot src/main.ts",
+    "dev:web": "bun --filter web dev",
+    "dev": "bun --parallel dev:backend dev:web",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

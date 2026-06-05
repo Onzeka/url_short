@@ -1,0 +1,75 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.primary {
+  background: var(--primary-gradient);
+  color: #08090f;
+  box-shadow: 0 4px 14px 0 rgba(0, 242, 254, 0.3);
+}
+
+.primary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(0, 242, 254, 0.5);
+}
+
+.primary:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.secondary {
+  background: var(--secondary-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 14px 0 rgba(243, 85, 136, 0.3);
+}
+
+.secondary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(243, 85, 136, 0.5);
+}
+
+.secondary:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--glass-border);
+  color: var(--text-primary);
+}
+
+.glass:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Sizes */
+.sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.md {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.lg {
+  padding: 14px 28px;
+  font-size: 18px;
+}
